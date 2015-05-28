@@ -2,7 +2,7 @@ FROM ubuntu
 MAINTAINER onohr <hiroyuki.ono.jc@renesas.com>
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
-RUN cp -p /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+RUN /bin/cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN sed -i".bak" -e 's|//archive.ubuntu.com|//ftp.riken.go.jp/Linux|g' /etc/apt/sources.list && cat /etc/apt/sources.list
 RUN apt-get -qq update && apt-get -y upgrade && \
     apt-get install -y wget tar perl fontconfig && \
