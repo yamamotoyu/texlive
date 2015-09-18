@@ -11,7 +11,12 @@ RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y install texlive-fonts-
 RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y install texlive-xetex
 RUN apt-get --force-yes -y install python-pygments
 RUN apt-get --force-yes -y update --fix-missing
-# New minted.sty from here:
-RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y install unzip;cd /tmp;wget http://mirrors.ctan.org/macros/latex/contrib/minted.zip;unzip minted.zip;cd minted;make;mkdir -p /usr/share/texlive/texmf-dist/tex/latex/minted;cp minted.sty /usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty; rm -rf /tmp/minted;mktexlsr
+RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y install unzip;
+# Install minted.sty:
+RUN cd /tmp;wget http://mirrors.ctan.org/macros/latex/contrib/minted.zip;unzip minted.zip;cd minted;make;mkdir -p /usr/share/texlive/texmf-dist/tex/latex/minted;cp minted.sty /usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty; cd /tmp/;rm -rf /tmp/minted;mktexlsr
+# Install lineno.sty:
+RUN cd /tmp;wget http://mirrors.ctan.org/macros/latex/contrib/lineno.zip;unzip lineno.zip;cd lineno;mkdir -p /usr/share/texlive/texmf-dist/tex/latex/lineno;cp *.sty /usr/share/texlive/texmf-dist/tex/latex/lineno/;cd /tmp;rm -rf /tmp/lineno;mktexlsr
+# Install mdframed.sty:
+RUN cd /tmp;wget http://mirrors.ctan.org/macros/latex/contrib/mdframed.zip;unzip mdframed.zip;cd mdframed;make all;mkdir -p /usr/share/texlive/texmf-dist/tex/latex/mdframed;cp *.sty *.mdf *.cls /usr/share/texlive/texmf-dist/tex/latex/mdframed/; cd /tmp/;rm -rf /tmp/mdframed;mktexlsr
 ENV DEBIAN_FRONTEND dialog
 CMD /bin/bash
