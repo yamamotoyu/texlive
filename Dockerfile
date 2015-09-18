@@ -8,6 +8,7 @@ RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y install texlive
 RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y install texlive-lang-cjk
 RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y install texlive-fonts-recommended
 RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y install texlive-fonts-extra
+RUN apt-get -o Acquire::http::Dl-Limit=300 --force-yes -y texlive-xetex
 RUN apt-get --force-yes -y install python-pygments
 RUN apt-get --force-yes -y update --fix-missing
 
