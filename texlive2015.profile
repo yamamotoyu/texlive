@@ -64,7 +64,7 @@ option_file_assocs 1
 option_fmt 1
 option_letter 0
 option_menu_integration 1
-option_path 0
+option_path 1
 option_post_code 1
 option_src 1
 option_sys_bin /usr/local/bin
