@@ -3,7 +3,7 @@ MAINTAINER Yamamoto Yu
 
 ENV PKG="${PKG} wget tar unzip"
 ENV PKG="${PKG} fontconfig fonts-takao-pgothic fonts-takao-gothic fonts-takao-mincho"
-RUN apt-get -qq update && \\
+RUN apt-get -qq update && \
     echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     ( apt-get -qq --force-yes -y --no-install-recommends install language-pack-ja || \
       apt-get -qq --force-yes -y --no-install-recommends install language-pack-ja=1:14.04+20140410 ) && \
