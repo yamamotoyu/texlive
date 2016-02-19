@@ -26,7 +26,10 @@ RUN wget -nv -O install-tl.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/i
     tar -xzf install-tl.tar.gz -C install-tl --strip-components=1 && \
     cd install-tl/ && \
     ./install-tl --persistent-downloads --profile texlive2015.profile && \
-    rm install-tl.tar.gz && rm -r install-tl
+    cd .. && \
+    rm install-tl.tar.gz && \
+    rm -r install-tl
+
 RUN cp $(kpsewhich -var-value TEXMFSYSVAR)/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 RUN fc-cache -fsv
 
