@@ -23,7 +23,7 @@ RUN mkdir -p install-tl
 ADD texlive2015.profile install-tl/
 
 RUN wget -nv -O install-tl.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
-    tar -xzf install-tl.tar.gz -C install-tl --strip-components=1 &&
+    tar -xzf install-tl.tar.gz -C install-tl --strip-components=1 && \
     cd install-tl/ && \
     ./install-tl --persistent-downloads --profile texlive2015.profile && \
     rm install-tl.tar.gz && rm -r install-tl
